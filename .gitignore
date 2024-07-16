@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+
+# Misc
+
+.DS_Store
+ErrorManager/src/build/
+ErrorManager/src/build/*
+ErrorManager/src/build/*.*
+ErrorManager/test/build/
+ErrorManager/test/build/*
+ErrorManager/test/build/*.*
