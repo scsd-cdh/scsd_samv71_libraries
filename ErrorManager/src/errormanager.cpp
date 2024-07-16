@@ -1,10 +1,10 @@
 #include "errormanager.h"
 
-#define QUEUE_SIZE 5
+#define QUEUE_SIZE 5 // TODO verify this.
 
 class CustomQueue {
 private:
-    int queue[QUEUE_SIZE];
+    int queue[QUEUE_SIZE]; // TODO change this to uint8 or 16 
     void enqueue(int value) {
         for (int i = QUEUE_SIZE - 1; i > 0; i--) {
             queue[i] = queue[i - 1];
@@ -23,12 +23,12 @@ public:
         enqueue(errorCode);
     }
 
-    int Query() {
+    int Query() { // TODO change return type to array or pointer
         return queue[0];
     }
 };
 
-CustomQueue customQueue;
+CustomQueue customQueue; //TODO make this static
 
 int errormanager::Query() {
     return customQueue.Query();
