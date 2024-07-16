@@ -38,6 +38,8 @@
 ErrorManager/src/build/
 ErrorManager/src/build/*
 ErrorManager/src/build/*.*
+!ErrorManager/src/build/placeholder.txt
 ErrorManager/test/build/
 ErrorManager/test/build/*
 ErrorManager/test/build/*.*
+!ErrorManager/test/build/placeholder.txt
