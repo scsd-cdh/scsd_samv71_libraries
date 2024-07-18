@@ -5,10 +5,11 @@
  *  Author: Rowan
 */
 
+
 #ifndef CRC8_H
 #define CRC8_H
 
-#include <stdint.h> // Should be imported elsewhere
+#include <stdint.h> // May be included elsewhere
 
 // Generator Polynomial used in AUTOSAR 0x2F polynomial CRC8 specification
 const uint8_t crc_polynomial = 0x2F;
@@ -22,7 +23,7 @@ const uint8_t crc_xor_value = 0xFF;
 // Magic check number used to verify data integrity
 const uint8_t crc_magic_check = 0x42;
 
-// Pre-computed AUTOSAR CRC8 table
+// Pre-computed AUTOSAR CRC8 table (see CRCTableGenerator)
 const uint8_t crc_lookup_table[256] = {
     0x00, 0x2F, 0x5E, 0x71, 0xBC, 0x93, 0xE2, 0xCD, 0x57, 0x78, 0x09, 0x26, 0xEB, 0xC4, 0xB5, 0x9A,
     0xAE, 0x81, 0xF0, 0xDF, 0x12, 0x3D, 0x4C, 0x63, 0xF9, 0xD6, 0xA7, 0x88, 0x45, 0x6A, 0x1B, 0x34,
@@ -44,6 +45,7 @@ const uint8_t crc_lookup_table[256] = {
 
 uint8_t calculate_crc(uint8_t* buffer, uint8_t buffer_size);
 uint8_t check_data_validity(uint8_t* buffer, uint8_t buffer_size, uint8_t crc_result);
+uint8_t magic_check_data_validity(uint8_t* buffer_with_crc, uint8_t buffer_size);
 
 
 #endif /* CRC8_H */

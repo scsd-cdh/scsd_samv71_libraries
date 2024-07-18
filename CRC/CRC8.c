@@ -1,5 +1,5 @@
 /*
- * CRC8.c
+* CRC8.c
  *
  * Created: 2024-07-13 2:17:34 PM
  *  Author: Rowan
@@ -22,18 +22,17 @@ uint8_t calculate_crc(uint8_t* buffer, uint8_t buffer_size) {
     return crc ^ crc_xor_value;
 }
 
-/* Verifies data integrity using the magic check */
+/* Verifies data integrity by recalculating the CRC */
 uint8_t check_data_validity(uint8_t* buffer, uint8_t buffer_size, uint8_t crc_result) {
+    return calculate_crc(buffer, buffer_size) == crc_result;
+}
 
-    // Combine the data and the computed CRC value into one packet
-    uint8_t packet[buffer_size + 1];
-    for (int i = 0; i < buffer_size; i++) {
-        packet[i] = buffer[i];
-    }
-    packet[buffer_size] = crc_result;
 
-    // Calculate the CRC of the new buffer XORed with the crc_xor_value
-    uint8_t checksum = calculate_crc(packet, buffer_size+1) ^ crc_xor_value;
+/* Verifies data integrity using the magic check */
+uint8_t magic_check_data_validity(uint8_t* buffer_with_crc, uint8_t buffer_size) {
+
+    // Calculate the CRC of the data appended with the CRC XORed with the crc_xor_value (as seen in Example 7.2 of the specification)
+    uint8_t checksum = calculate_crc(buffer_with_crc, buffer_size+1) ^ crc_xor_value;
 
     /* This result should be equal to crc_magic_check */
     return checksum == crc_magic_check;
