@@ -22,17 +22,16 @@ uint8_t calculate_crc(uint8_t* buffer, uint8_t buffer_size) {
     return crc ^ crc_xor_value;
 }
 
-/* Verifies data integrity by recalculating the CRC */
+/* Verifies data integrity by recalculating the CRC and comparing */
 uint8_t check_data_validity(uint8_t* buffer, uint8_t buffer_size, uint8_t crc_result) {
     return calculate_crc(buffer, buffer_size) == crc_result;
 }
 
-
-/* Verifies data integrity using the magic check */
+/* Verifies data integrity using the magic check, where the buffer contains the data appended with the CRC */
 uint8_t magic_check_data_validity(uint8_t* buffer_with_crc, uint8_t buffer_size) {
 
-    // Calculate the CRC of the data appended with the CRC XORed with the crc_xor_value (as seen in Example 7.2 of the specification)
-    uint8_t checksum = calculate_crc(buffer_with_crc, buffer_size+1) ^ crc_xor_value;
+    // Calculate the CRC of the buffer XORed with the crc_xor_value (as seen in Example 7.2 of the specification)
+    uint8_t checksum = calculate_crc(buffer_with_crc, buffer_size) ^ crc_xor_value;
 
     /* This result should be equal to crc_magic_check */
     return checksum == crc_magic_check;
