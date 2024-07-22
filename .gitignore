@@ -32,6 +32,45 @@
 *.app
 
 
+# IDE specific
+
+*/.idea/
+*/.idea/*
+*/.idea/*.*
+
+*/.vscode/
+*/.vscode/*
+*/.vscode/*.*
+
+*/.vs/
+*/.vs/*
+*/.vs/*.*
+
+*/.ccls-cache/
+*/.ccls-cache/*
+*/.ccls-cache/*.*
+
+*/.clangd/
+*/.clangd/*
+*/.clangd/*.*
+
+*/.cquery/
+*/.cquery/*
+*/.cquery/*.*
+
+*/.ccls/
+*/.ccls/*
+*/.ccls/*.*
+
+*/.cache/
+*/.cache/*
+*/.cache/*.*
+
+*/.vscode-server/
+*/.vscode-server/*
+*/.vscode-server
+
+
 # Misc
 
 .DS_Store
@@ -41,3 +80,12 @@ ErrorManager/src/build/*.*
 ErrorManager/test/build/
 ErrorManager/test/build/*
 ErrorManager/test/build/*.*
+
+# CMake
+
+*/build/
+*/build/*
+*/build/*.*
+build/
+build/*
+build/*.*
